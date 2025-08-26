@@ -1,9 +1,11 @@
 def create_contact():
     print("Creating a new contact...")
-    name = input("Enter name: ")
+    first_name = input("Enter first name: ")
+    last_name = input("Enter last name: ")
     email = input("Enter email: ")
     phone = input("Enter phone number: ")
-    contact_data = {"name": name, "email": email, "phone": phone}
+    contact_data = {"first name": first_name, "last name": last_name, "email": email, "phone": phone}
     return contact_data
-
+def contact_database():
+    
 create_contact()
