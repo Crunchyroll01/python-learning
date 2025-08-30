@@ -39,16 +39,18 @@ student2= dict(
 # Challenge Difficulty
 # Create a course dictionary using at least 2 different methods
 # Include: course_code, title, credits, instructor
-cody_fancil{
+cody_fancil={}
+jerry={}
+cody_fancil={
     "course_code": "CS1300",
-    "title": "Computer Science 2"
-    "credit_hour": 12, 
+    "title": "Computer Science 2",
+    "credit_hour": 12,
     "instructor": "Xin Wang"
 }
-jerry{
+jerry={
     "course_code": "CS1300",
     "title": "Computer Science 2",
     "credit_hour": 15,
     "instructor": "Xin Wang"
 }
-Comp_Sci2={cody_fancil{},jerry{}}
+Comp_Sci2={cody_fancil,jerry}
