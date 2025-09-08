@@ -97,12 +97,15 @@ def create_contact():
     clear_screen()
     
     while True:
-        state = input("Enter state: ").strip().capitalize()
+        state = input("Enter state abbreviation: ").strip().capitalize()
         if state == "":
             print("State cannot be empty.")
             continue
         elif state.isdigit():
             print("State cannot be only numbers.")
+            continue
+        elif len(state) != 2:
+            print("State must be a 2-letter abbreviation.")
             continue
         break
     clear_screen()
@@ -352,7 +355,112 @@ def update_contact():
             else:
                 print(f"\nNo contact found with the name: {name_query}, cannot update.\n")
                 return None
-
+"""
+def contact_statistics():
+    
+    Generates and displays statistics about the contacts in the contacts_database.
+    Statistics include total number of contacts, number of unique cities, and number of unique states.
+    
+    if not contacts_database:
+        print("\nNo contacts are stored currently.\n")
+        return
+    
+    total_contacts = len(contacts_database)
+    unique_cities = set()
+    unique_states = set()
+    
+    for contact in contacts_database.values():
+        unique_cities.add(contact['address']['city'])
+        unique_states.add(contact['address']['state'])
+    
+    print("\n--- Contact Statistics ---")
+    print(f"Total number of contacts: {total_contacts}")
+    print(f"Number of unique cities: {len(unique_cities)}")
+    print(f"Number of unique states: {len(unique_states)}")
+"""
+def find_duplicates():
+    """
+    Identifies and displays duplicate contacts based on email or phone number.
+    Prints the details of duplicate contacts if found, otherwise notifies the user.
+    """
+    if not contacts_database:
+        print("\nNo contacts are stored currently.\n")
+        return
+    
+    seen_emails = {}
+    seen_phones = {}
+    seen_first_names = {}
+    seen_last_names = {}
+    duplicates = []
+    
+    for contact_id, contact in contacts_database.items():
+        first_name = contact['first_name']
+        last_name = contact['last_name']
+        email = contact['email']
+        phone = contact['phone']
+        timestamp = contact['Timestamp']
+        
+        if email in seen_emails:
+            duplicates.append((seen_emails[email], contact_id))
+        else:
+            seen_emails[email] = contact_id
+        
+        if phone in seen_phones:
+            duplicates.append((seen_phones[phone], contact_id))
+        else:
+            seen_phones[phone] = contact_id
+        if first_name in seen_first_names:
+            duplicates.append((seen_first_names[first_name], contact_id))
+        else:
+            seen_first_names[first_name] = contact_id
+        if last_name in seen_last_names:
+            duplicates.append((seen_last_names[last_name], contact_id))
+'''
+    if len(duplicates) > 0:
+        print("\n--- Duplicate Contacts Found ---")
+        for dup in duplicates:
+            print(f"Duplicate pair: {dup[0]} and {dup[1]}\n")
+            print(f"{dup[0]}: {contacts_database[dup[0]]}\n")
+            print(f"{dup[1]}: {contacts_database[dup[1]]}\n")
+    else:
+        print("\nNo duplicate contacts found.\n")
+        
+    if len(duplicates) > 0:
+        choice=input("Do you want to merge contacts? (y/n): ").strip().lower()
+        if choice == 'y' or 'Y':
+            for dup in duplicates:
+        else:
+            print("No contacts were merged.")
+'''
+def generate_statistics():
+    """
+    Generates and displays statistics about the contacts in the contacts_database.
+    """
+    if not contacts_database:
+        print("\nNo contacts are stored currently.\n")
+        return
+    
+    total_contacts = len(contacts_database)
+    unique_cities = set()
+    unique_states = set()
+    
+    for contact in contacts_database.values():
+        unique_cities.add(contact['address']['city']['zip code'])
+        unique_states.add(contact['address']['state']['zip code'])
+    
+    print("\n--- Contact Statistics ---")
+    print(f"Total number of contacts: {total_contacts}")
+    print(f"Number of unique cities: {len(unique_cities)}")
+    print(f"Number of unique states: {len(unique_states)}")
+    for state in unique_states:
+        print (f"State: {state}, Number of contacts: {sum(1 for contact in contacts_database.values() if contact['state'] == state)}")
+    print("\n")
+    for zip in unique_cities:
+        print (f"Zip Code: {zip}, Number of contacts: {sum(1 for contact in contacts_database.values() if contact['zip code'] == zip)}")
+    print("\n")
+    
+    # No input info is allowed to be empty, all contacts have all fields filled. 
+    # Therefore, no need to check for empty fields when generating statistics or floats for averages per category, each will be 100%.
 def main_menu():
     """
     Displays the main menu and handles user navigation through the contact manager.
@@ -407,11 +515,11 @@ def main_menu():
             delete_contact()
         elif choice == 6:
             clear_screen()
-            # generate_statistics()
+            generate_statistics()
             pass
         elif choice == 7:
             clear_screen()
-            # find_duplicates()
+            find_duplicates()
             pass
         elif choice == 8:
             clear_screen()
