@@ -398,7 +398,6 @@ def find_duplicates():
         last_name = contact['last_name']
         email = contact['email']
         phone = contact['phone']
-        timestamp = contact['Timestamp']
         
         if email in seen_emails:
             duplicates.append((seen_emails[email], contact_id))
@@ -415,7 +414,7 @@ def find_duplicates():
             seen_first_names[first_name] = contact_id
         if last_name in seen_last_names:
             duplicates.append((seen_last_names[last_name], contact_id))
-'''
+
     if len(duplicates) > 0:
         print("\n--- Duplicate Contacts Found ---")
         for dup in duplicates:
@@ -424,14 +423,30 @@ def find_duplicates():
             print(f"{dup[1]}: {contacts_database[dup[1]]}\n")
     else:
         print("\nNo duplicate contacts found.\n")
-        
+        return
+
     if len(duplicates) > 0:
-        choice=input("Do you want to merge contacts? (y/n): ").strip().lower()
-        if choice == 'y' or 'Y':
+        choice = input("Do you want to merge contacts? The most recent will take precedent. (y/n): ").strip().lower()
+        if choice in ['y', 'yes']:
             for dup in duplicates:
+                contact1 = contacts_database[dup[0]]
+                contact2 = contacts_database[dup[1]]
+
+                # Compare timestamps (updated timestamp is taken into account, else original timestamp)
+                t1 = contact1.get('Timestamp_updated', contact1['Timestamp'])
+                t2 = contact2.get('Timestamp_updated', contact2['Timestamp'])
+
+                if t1 >= t2:
+                    del contacts_database[dup[1]]
+                    print(f"Merged {dup[1]} into {dup[0]}")
+                else:
+                    del contacts_database[dup[0]]
+                    print(f"Merged {dup[0]} into {dup[1]}")
+
         else:
             print("No contacts were merged.")
-'''
+            return
+
 def generate_statistics():
     """
     Generates and displays statistics about the contacts in the contacts_database.
