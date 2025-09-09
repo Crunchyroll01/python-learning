@@ -53,4 +53,48 @@ def exercise_1_1():
     
     return array_range, array_linear, identity_matrix, random_matrix
 
-arrays = exercise_1_1()
+exercise_1_1()
+
+def exercise_1_2():
+    #Explore array attributes with different dimensional arrays.
+    print("\n"+"="*50)
+    print("Exercise 1.2: Array Attributes")
+    print("="*50)
+    
+    arr_1d = np.array([1,2,3,4,5])
+    arr_2d = np.array([[1, 2, 3], [4, 5, 6]])
+    arr_3d = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+    arrays = [
+        ("1D Array", arr_1d),
+        ("2D Array", arr_2d),
+        ("3D Array", arr_3d)
+    ]
+    
+    for name, arr in arrays:
+        print(f"\n{name}")
+        print(f" Array: {arr}")
+        print(f" Shape: {arr.shape}")
+        print(f" Dimensions: {arr.ndim}")
+        print(f" Data Type: {arr.dtype}")
+        print(f" Size : {arr.size}")
+        print(f" Item Size: {arr.itemsize} bytes")
+        print(f" Total Bytes: {arr.nbytes} bytes")
+        
+        return arr_1d, arr_2d, arr_3d
+    
+exercise_1_2()
+
+def exercise_2_1():
+    #Compare performance between NumPy arrays and Python lists.
+    #Create visualizations showing the speed difference.
+    
+    print("\n"+"="*50)
+    print("Exercise 2.1: The Great Performance Race!")
+    print("="*50)
+    
+    sizes = [100,1000,10000,100000]
+    python_times = []
+    numpy_times = []
+    
+    for size in sizes:
+        python_list = list(range(size))
