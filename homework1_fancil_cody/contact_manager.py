@@ -355,11 +355,11 @@ def update_contact():
             else:
                 print(f"\nNo contact found with the name: {name_query}, cannot update.\n")
                 return None
-"""
+
 def contact_statistics():
     
-    Generates and displays statistics about the contacts in the contacts_database.
-    Statistics include total number of contacts, number of unique cities, and number of unique states.
+    #Generates and displays statistics about the contacts in the contacts_database.
+    #Statistics include total number of contacts, number of unique cities, and number of unique states.
     
     if not contacts_database:
         print("\nNo contacts are stored currently.\n")
@@ -368,16 +368,19 @@ def contact_statistics():
     total_contacts = len(contacts_database)
     unique_cities = set()
     unique_states = set()
+    unique_addresses = set()
     
     for contact in contacts_database.values():
         unique_cities.add(contact['address']['city'])
         unique_states.add(contact['address']['state'])
+        unique_addresses.add(contact['address']['street'])
     
     print("\n--- Contact Statistics ---")
     print(f"Total number of contacts: {total_contacts}")
     print(f"Number of unique cities: {len(unique_cities)}")
     print(f"Number of unique states: {len(unique_states)}")
-"""
+    print(f"Number of unique street addresses: {len(unique_addresses)}\n")
+    
 def find_duplicates():
     """
     Identifies and displays duplicate contacts based on email or phone number.
