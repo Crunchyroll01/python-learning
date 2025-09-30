@@ -25,7 +25,7 @@ def format_receipt():
     lines.append(separator)
     
     return "\n".join(lines)
-
+print(format_receipt())
 
 def process_user_data():
     
@@ -78,7 +78,7 @@ def process_user_data():
         'username' : username
         }
     print(f"This is the cleaned data: {cleaned_data}")
-
+process_user_data()
 
 def analyze_text():
     # Perform comprehnsive text analysis using string methods.
@@ -136,7 +136,7 @@ def analyze_text():
         'exclamations': exclamations
     }
     print(analyzed_text)
-
+analyze_text()
 def find_patterns():
     # Find basic patterns in text using regex.
     text = "I have 25 apples and 3.14 Pies pies. HELLO W0RLD!"
@@ -345,8 +345,7 @@ def analyze_log_file():
             if count > max_count:
                 max_count = count
                 most_active_hour = h
-
-    return {
+    analysis_results = {     
         "total_entries": total_entries,
         "error_count": error_count,
         "warning_count": warning_count,
@@ -356,4 +355,5 @@ def analyze_log_file():
         "time_range": (earliest_time, latest_time),
         "most_active_hour": most_active_hour
     }
+    print(analysis_results)
 analyze_log_file()
