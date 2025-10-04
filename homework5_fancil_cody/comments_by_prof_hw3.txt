@@ -1,0 +1,32 @@
+1. Grading Rubric:
+   * String methods:          
+    * Receipt Formatting     10 out of 10
+    * Data Processing        12 out of 12
+    * Text Analysis          13 out of 13 ### Great job ###
+   * Regular Expression:     
+    * Pattern Finding        10 out of 10
+    * Format Validation      12 out of 12
+    * Information Extraction 13 out of 13
+   * Combined:                
+    * Cleaning Pipeline      10 out of 10
+    * Smart Replace          10 out of 10
+   * Application:            
+    * Log Analysis           10 out of 10 
+   
+2. Total: 100 out of 100.
+
+Great job, Cody!
+
+Code very formatted and very easy to read.
+
+Details
+Line 62: To replace multiple spaces with one, use split() and " ".join()
+Line 63: This assumes that there are only first name and last name in the name
+Line 72: As for Line 62
+Line 161: This will allow any letter/digit comes in between the repeated chars
+Line 191: Great job!
+Line 237: This is a very good solution, even though we did not talk about re.split
+          in cleaned_address
+
+
+
