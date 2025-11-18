@@ -1,0 +1,23 @@
+Part I Scores: 28
+
+Part 2 Grading Rubrics:
+Problem 1:
+- add_item function:                5 out of 5 points
+- calculate_total function:         5 out of 5 points  
+- apply_discount function:          5 out of 5 points
+
+Problem 3:
+- create_score_array:               5 out of 5 points
+- find_struggling_students:         5 out of 5 points
+- curve_scores:                     5 out of 5 points
+- get_exam_statistics:              0 out of 5 points
+
+Problem 4:
+- clean_message:                    5 out of 5 points
+- expand_abbreviations:             5 out of 5 points
+- count_words:                      5 out of 5 points
+- censor_numbers:                   5 out of 5 points
+
+Total:50 out of 35
+
+Great job, Cody, Keep it up!
